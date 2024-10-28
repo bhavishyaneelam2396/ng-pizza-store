@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { WebsocketService } from './services/websocket.service';
 
 @Component({
   selector: 'app-root',
@@ -9,5 +10,19 @@ import { RouterOutlet } from '@angular/router';
   styleUrl: './app.component.sass'
 })
 export class AppComponent {
-  title = 'ng-pizza-store';
+  name = 'Angular';
+
+  constructor(private service: WebsocketService) {}
+
+  send(msg: string) {
+    this.service.send(msg);
+  }
+
+  connect() {
+    this.service.connect();
+  }
+
+  disconnect() {
+    this.service.disconnect();
+  }
 }
